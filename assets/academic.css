@@ -128,7 +128,7 @@ html {
   min-height: var(--tabs-height);
   padding: 0 20px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #666;
@@ -1102,7 +1102,7 @@ select.control {
   }
   .page-tabs a {
     padding: 0 16px;
-    font-size: 13px;
+    font-size: 14px;
   }
   .side-stack,
   .notice-side {
@@ -1313,5 +1313,15 @@ select.control {
   }
   .date-box .day {
     font-size: 20px;
+  }
+}
+
+/* 44px touch targets for inline header/footer links on mobile (brand kit §4) */
+@media (max-width: 767px) {
+  .page-banner .breadcrumb a,
+  .footer address a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
   }
 }

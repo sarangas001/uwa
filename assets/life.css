@@ -83,11 +83,11 @@
   padding-top: 16px;
   border-top: 1px solid var(--border);
 }
-.side-group h2 {
+.side-title {
   margin: 0 0 8px;
   padding-left: 12px;
-  font: 600 12px/1.5 Inter, sans-serif;
-  letter-spacing: 1.5px;
+  font: 600 14px/1.5 Inter, sans-serif;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -239,9 +239,9 @@
 /* Activities */
 .card-eyebrow {
   margin-bottom: 8px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
-  letter-spacing: 1.2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -267,10 +267,7 @@
 }
 .tag-row .chip {
   border-radius: 20px;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  font-size: 12px;
-  white-space: nowrap;
+  font-size: 14px;
   background: transparent;
 }
 .upcoming {
@@ -283,7 +280,7 @@
   justify-content: space-between;
   gap: 16px;
   padding: 12px 24px;
-  background: #e6e6e6;
+  background: var(--gray);
   border-bottom: 1px solid var(--border);
 }
 .upcoming-head h3 {
@@ -690,8 +687,8 @@
     font-size: 24px;
   }
   .banner-stats span {
-    font-size: 12px;
-    letter-spacing: 0.3px;
+    font-size: 14px;
+    letter-spacing: 0.2px;
   }
   .side-menu {
     columns: 1;
@@ -717,7 +714,7 @@
   .gallery-tile.tall {
     grid-column: span 2;
     grid-row: auto;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 4 / 3;
   }
   .cta-card {
     flex-direction: column;
@@ -735,8 +732,11 @@
   }
 }
 @media (max-width: 479px) {
+  .banner-stats li {
+    padding-inline: 4px;
+  }
   .banner-stats span {
-    font-size: 11px;
+    letter-spacing: 0;
   }
 }
 
@@ -764,4 +764,17 @@
   .card-grid.cols-3 {
     grid-template-columns: 1fr;
   }
+}
+
+/* touch-friendly sidebar menu below the desktop layout */
+@media (max-width: 1099px) {
+  .side-group a,
+  .side-group .sub a {
+    min-height: 44px;
+  }
+}
+/* visible focus on dark surfaces (brand kit §22) */
+.page-banner :focus-visible,
+.cta-band :focus-visible {
+  outline-color: var(--gold);
 }
