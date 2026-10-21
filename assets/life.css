@@ -2,7 +2,10 @@
 
 /* ---------- Banner ---------- */
 .life-banner {
-  background: linear-gradient(135deg, var(--deep) 0%, var(--purple) 70%);
+  background: var(--purple);
+}
+.life-banner .page-banner-media img {
+  object-position: 50% 30%;
 }
 .life-banner > .container {
   min-height: 0;

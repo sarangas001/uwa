@@ -8,6 +8,7 @@
   const allBtn = $("#all-activities");
   const note = $("#activity-note");
   const state = { all: false, filter: "" };
+  let onActivities = () => {};
   const FILTERS = {
     annual: { label: "Annual Events", test: (c) => c.dataset.group === "Annual Event" },
     workshop: { label: "Workshops & Seminars", test: (c) => c.dataset.group === "Workshop" },
@@ -25,12 +26,10 @@
     allBtn.firstChild.textContent = state.all && !f ? "Show featured " : "All activities ";
     note.hidden = !f;
     if (f) note.textContent = "Showing " + shown + (shown === 1 ? " activity" : " activities") + " in " + f.label + ".";
-    $$("[data-filter]").forEach((a) => {
-      const on = a.dataset.filter === (state.filter || "all");
-      a.classList.toggle("is-filter-on", on);
-    });
+    onActivities();
   }
   allBtn.addEventListener("click", () => {
+    manual = null;
     state.filter = "";
     state.all = !state.all;
     renderActivities();
@@ -55,46 +54,97 @@
     }),
   );
 
-  /* ---------- Sidebar: mobile toggle + scroll-spy ---------- */
+  /* ---------- Sidebar: mobile toggle, click-to-activate, scroll-spy ---------- */
   const toggle = $(".side-toggle");
   const menu = $("#side-menu");
+  const box = $(".side-sticky");
+  const clubsNote = $("#clubs-note");
+  const sideLinks = $$("a", menu);
+  const targetOf = (a) => document.getElementById(a.getAttribute("href").slice(1));
+  const isMobileSide = () => matchMedia("(max-width: 1099px)").matches;
+  let manual = null;
+  let lockUntil = 0;
+
   toggle.addEventListener("click", () => {
     const open = toggle.getAttribute("aria-expanded") !== "true";
     toggle.setAttribute("aria-expanded", String(open));
     menu.classList.toggle("open", open);
   });
+
+  function filterLink() {
+    return sideLinks.find((a) => a.dataset.filter === (state.filter || "all"));
+  }
+  function keepInView(a) {
+    if (isMobileSide()) return;
+    const r = a.getBoundingClientRect(),
+      b = box.getBoundingClientRect();
+    if (r.top < b.top + 8) box.scrollTop -= b.top + 8 - r.top;
+    else if (r.bottom > b.bottom - 8) box.scrollTop += r.bottom - (b.bottom - 8);
+  }
+  function paint(active) {
+    sideLinks.forEach((a) => {
+      const on = a === active;
+      a.classList.toggle("active", on);
+      if (on) a.setAttribute("aria-current", "location");
+      else a.removeAttribute("aria-current");
+    });
+    if (active) keepInView(active);
+  }
+  function compute() {
+    const pad = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--scroll-pad") || "200");
+    const line = pad + 40;
+    if (manual) {
+      const r = targetOf(manual).getBoundingClientRect();
+      if (performance.now() < lockUntil || (r.bottom > pad && r.top < innerHeight * 0.6)) return manual;
+      manual = null;
+    }
+    let cur = null;
+    sideLinks.forEach((a) => {
+      const t = targetOf(a);
+      if (t && t.getBoundingClientRect().top <= line) cur = t;
+    });
+    if (!cur) return filterLink();
+    if (cur.id === "activities") return filterLink();
+    return sideLinks.find((a) => targetOf(a) === cur && !a.dataset.filter && !a.dataset.club) || null;
+  }
+  const refresh = () => paint(compute());
+  onActivities = refresh;
+
   menu.addEventListener("click", (e) => {
-    if (e.target.closest("a") && matchMedia("(max-width: 1099px)").matches) {
+    const a = e.target.closest("a");
+    if (!a) return;
+    manual = a;
+    lockUntil = performance.now() + 1200;
+    if (clubsNote) {
+      const missing = a.dataset.club && !a.dataset.hasCard;
+      clubsNote.hidden = !missing;
+      if (missing) clubsNote.textContent = a.dataset.club + " details will be added soon.";
+    }
+    const t = targetOf(a);
+    if (t && t.matches("article")) {
+      t.classList.remove("highlight");
+      void t.offsetWidth;
+      t.classList.add("highlight");
+      setTimeout(() => t.classList.remove("highlight"), 2200);
+    }
+    paint(a);
+    if (isMobileSide()) {
       toggle.setAttribute("aria-expanded", "false");
       menu.classList.remove("open");
     }
   });
-  const links = $$("a[href^='#']", menu).filter((a) => !a.dataset.filter || a.dataset.filter === "all");
-  const targets = links.map((a) => document.getElementById(a.getAttribute("href").slice(1)));
-  function spy() {
-    const line = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--scroll-pad") || "200") + 40;
-    let cur = -1;
-    targets.forEach((t, i) => {
-      if (t && t.getBoundingClientRect().top <= line) cur = i;
-    });
-    links.forEach((a, i) => {
-      a.classList.toggle("active", i === cur);
-      if (i === cur) a.setAttribute("aria-current", "location");
-      else a.removeAttribute("aria-current");
-    });
-  }
   let q = false;
   window.addEventListener(
     "scroll",
     () => {
       if (!q) {
         q = true;
-        requestAnimationFrame(() => ((q = false), spy()));
+        requestAnimationFrame(() => ((q = false), refresh()));
       }
     },
     { passive: true },
   );
-  spy();
+  refresh();
 
   /* ---------- Gallery lightbox ---------- */
   $$(".gallery-tile").forEach((b) =>
