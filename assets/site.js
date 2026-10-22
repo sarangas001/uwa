@@ -41,7 +41,7 @@
   const root = document.documentElement;
   const header = $(".identity");
   const mainNav = $("#navigation");
-  const tabs = $("#page-tabs");
+  const tabs = $("#page-tabs") || (() => { const n = document.createElement("nav"); n.append(document.createElement("div")); return n; })();
   function measure() {
     const navH = mobileMedia.matches ? 0 : mainNav.offsetHeight;
     root.style.setProperty("--stack-top", header.offsetHeight + navH + "px");

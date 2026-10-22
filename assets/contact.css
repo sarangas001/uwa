@@ -1,0 +1,824 @@
+/* Contact page styles. Builds on assets/base.css (fields, alerts, tables) and assets/academic.css (banner, sections, CTA band). */
+
+.lbl {
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.muted {
+  color: var(--muted);
+}
+.q-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--purple);
+}
+.q-icon .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- Banner ---------- */
+.contact-banner > .container {
+  min-height: 0;
+  padding-block: 48px 56px;
+}
+.contact-banner-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+.contact-banner .page-banner-copy {
+  max-width: 620px;
+}
+.quick-cards {
+  display: grid;
+  flex-shrink: 0;
+  gap: 12px;
+  width: 400px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.quick-cards li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px #00000026;
+  color: var(--ink);
+}
+.quick-cards .lbl {
+  font-size: 14px;
+}
+.quick-cards a,
+.quick-cards strong {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.quick-cards a:hover {
+  color: var(--purple);
+}
+.quick-cards .sep {
+  color: var(--muted);
+}
+
+/* ---------- Quick band ---------- */
+.quick-band {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.quick-band ul {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.quick-band li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 16px;
+  border-right: 1px solid var(--border);
+}
+.quick-band li:first-child {
+  padding-left: 0;
+}
+.quick-band li:last-child {
+  border-right: 0;
+}
+.quick-band a,
+.quick-band strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.quick-band a:hover {
+  color: var(--purple);
+}
+.quick-band .note {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+/* ---------- Form ---------- */
+.form-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 48px;
+  align-items: start;
+}
+.contact-form {
+  display: grid;
+  gap: 24px;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.contact-form .field select {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px;
+  border: 1px solid var(--purple);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 16px;
+}
+.contact-form .field [aria-invalid="true"] {
+  border-color: var(--error);
+}
+.contact-form textarea {
+  min-height: 160px;
+}
+.hint {
+  font-size: 14px;
+  color: var(--muted);
+}
+.consent .check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 400;
+  cursor: pointer;
+}
+.consent input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--purple);
+}
+.contact-form .actions {
+  margin-top: 0;
+}
+.privacy {
+  font-size: 14px;
+  color: var(--muted);
+}
+.form-side {
+  display: grid;
+  gap: var(--gap);
+}
+.side-card {
+  overflow: hidden;
+}
+.side-card > h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  font-size: 18px;
+  line-height: 1.4;
+  background: var(--gray);
+  border-bottom: 1px solid var(--border);
+}
+.h-icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--purple);
+}
+.h-icon .icon {
+  width: 20px;
+  height: 20px;
+}
+.detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.side-card .detail-list {
+  padding: 8px 20px;
+}
+.detail-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+}
+.side-card .detail-list li + li {
+  border-top: 1px solid var(--border);
+}
+.detail-list > li > .icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  color: var(--purple);
+}
+.detail-list strong,
+.detail-list a {
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.detail-list a:hover {
+  color: var(--purple);
+}
+.hours {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--border);
+}
+.hours ul {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+}
+.hours li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+}
+.hours li:last-child {
+  border-bottom: 0;
+}
+.hours .closed {
+  color: var(--error);
+}
+.map-box {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  justify-items: start;
+}
+.map-box .map-frame {
+  width: 100%;
+}
+.map-frame {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--gray);
+  box-shadow: none;
+}
+.map-frame iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.btn.small {
+  min-height: 44px;
+  padding: 10px 16px;
+  gap: 8px;
+}
+.social-list li > .icon {
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+}
+
+/* ---------- Dean ---------- */
+.dean-grid {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+  margin-top: 32px;
+}
+.dean-card {
+  overflow: hidden;
+}
+.dean-photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  aspect-ratio: 4 / 4;
+  background: #d4bee466;
+  color: var(--purple);
+  border-bottom: 1px solid var(--border);
+  border-radius: 12px 12px 0 0;
+}
+.dean-photo .icon {
+  width: 72px;
+  height: 72px;
+}
+.dean-photo span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.dean-body {
+  display: grid;
+  gap: 8px;
+  padding: var(--card-space);
+}
+.dean-body h3 {
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.dean-body .detail-list {
+  margin: 8px 0;
+  border-top: 1px solid var(--border);
+}
+.dean-body .btn {
+  width: 100%;
+}
+.dean-info h3 {
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+.dean-info > p {
+  margin-top: 12px;
+}
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+  margin: 24px 0;
+}
+.svc {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: #fff;
+}
+.svc h4 {
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: var(--ink);
+}
+.svc p {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #45414a;
+}
+.icon-tile {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #d4bee480;
+  color: var(--purple);
+}
+.icon-tile .icon {
+  width: 22px;
+  height: 22px;
+}
+.dean-hours {
+  min-width: 560px;
+}
+.dean-hours tbody th {
+  text-align: left;
+  font-weight: 600;
+}
+.dean-hours td,
+.dean-hours th {
+  vertical-align: middle;
+}
+
+/* ---------- Departments ---------- */
+.dept-c-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap);
+  margin-top: 32px;
+  align-items: stretch;
+}
+.dept-c {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.dept-c-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px var(--card-space);
+  background: var(--gray);
+  border-bottom: 1px solid var(--border);
+}
+.dept-c-head h3 {
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--ink);
+}
+.dept-c-head p {
+  font-size: 14px;
+  color: var(--muted);
+}
+.code-tile {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--purple);
+}
+.dept-c-body {
+  flex: 1;
+  padding: var(--card-space);
+}
+.hod {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.avatar-round {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: #d4bee480;
+  color: var(--purple);
+}
+.avatar-round .icon {
+  width: 28px;
+  height: 28px;
+}
+.hod strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--ink);
+}
+.hod span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.det {
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.det li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  font-size: 15px;
+}
+.det .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--purple);
+}
+.det .k {
+  min-width: 96px;
+  font-size: 14px;
+  color: var(--muted);
+}
+.det a,
+.det strong {
+  font-weight: 600;
+  color: var(--ink);
+}
+.dept-c-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px var(--card-space);
+  background: #fafafa;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Location ---------- */
+.loc-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 32px;
+  align-items: start;
+  margin-top: 32px;
+}
+.map-frame.big {
+  aspect-ratio: 16 / 10;
+}
+.loc-map .actions {
+  margin-top: 16px;
+}
+.loc-side {
+  display: grid;
+  gap: var(--gap);
+}
+.addr {
+  padding: 20px;
+}
+.addr h3 {
+  padding: 0;
+  margin-bottom: 8px;
+  background: none;
+  border: 0;
+  font-size: 18px;
+}
+.addr p {
+  font-weight: 600;
+  color: var(--ink);
+}
+.how h3 {
+  margin-bottom: 12px;
+  font-size: 20px;
+  color: var(--ink);
+}
+.transport {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.transport li {
+  display: flex;
+  gap: 16px;
+  padding: 16px 20px;
+}
+.transport li + li {
+  border-top: 1px solid var(--border);
+}
+.transport h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.transport p {
+  margin-top: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #45414a;
+}
+
+/* ---------- FAQ ---------- */
+.faq-layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+.faq-intro > p:not(.eyebrow) {
+  margin-top: 16px;
+}
+.faq-intro h2 {
+  margin-top: 4px;
+}
+.faq-more {
+  margin-top: 16px;
+}
+.faq-list {
+  overflow: hidden;
+  padding: 0;
+}
+.faq-row[hidden] {
+  display: none;
+}
+.faq-row {
+  border-bottom: 1px solid var(--border);
+}
+.faq-row:last-child {
+  border-bottom: 0;
+}
+.faq-row summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 14px 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+.faq-row summary::-webkit-details-marker {
+  display: none;
+}
+.faq-row summary:hover {
+  background: #f3eaf9;
+}
+.faq-row summary .icon {
+  width: 18px;
+  height: 18px;
+  color: var(--purple);
+  transition: transform 0.3s;
+}
+.faq-row[open] summary .icon {
+  transform: rotate(45deg);
+}
+.faq-body {
+  padding: 0 24px 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #45414a;
+}
+.faq-body p + p,
+.faq-body p + ul,
+.faq-body ul + p {
+  margin-top: 12px;
+}
+.faq-body ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+.faq-body li + li {
+  margin-top: 4px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1279px) {
+  .quick-cards {
+    width: 360px;
+  }
+  .form-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+    gap: 32px;
+  }
+  .dean-grid {
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 32px;
+  }
+  .loc-grid {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+}
+@media (max-width: 1099px) {
+  .contact-banner {
+    display: flow-root;
+  }
+  .contact-banner > .container,
+  .contact-banner-grid {
+    display: block;
+  }
+  .quick-cards {
+    width: 100%;
+    margin-top: 32px;
+  }
+  .quick-band ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .quick-band li:nth-child(2) {
+    border-right: 0;
+  }
+  .quick-band li:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--border);
+  }
+  .quick-band li:nth-child(3) {
+    padding-left: 0;
+  }
+  .form-layout,
+  .loc-grid,
+  .faq-layout {
+    grid-template-columns: 1fr;
+  }
+  .form-side {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+  .form-side > :last-child {
+    grid-column: 1 / -1;
+  }
+  .dean-grid {
+    grid-template-columns: 1fr;
+  }
+  .dean-card {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+  .dean-photo {
+    aspect-ratio: auto;
+    height: 100%;
+    border-bottom: 0;
+    border-right: 1px solid var(--border);
+    border-radius: 12px 0 0 12px;
+  }
+  .dept-c-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .contact-banner > .container {
+    padding-block: 32px;
+  }
+  .quick-cards {
+    margin-top: 24px;
+  }
+  .quick-band li {
+    padding: 16px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .quick-band ul {
+    grid-template-columns: 1fr;
+  }
+  .quick-band li:last-child {
+    border-bottom: 0;
+  }
+  .form-row,
+  .svc-grid,
+  .form-side {
+    grid-template-columns: 1fr;
+  }
+  .contact-form {
+    gap: 16px;
+  }
+  .form-row {
+    gap: 16px;
+  }
+  .contact-form .field select {
+    min-height: 44px;
+  }
+  .contact-form .actions .btn {
+    width: 100%;
+  }
+  .dean-card {
+    display: block;
+  }
+  .dean-photo {
+    aspect-ratio: 4 / 3;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 12px 12px 0 0;
+  }
+  .dept-c-foot .btn {
+    flex: 1 1 140px;
+  }
+  .det li {
+    flex-wrap: wrap;
+  }
+  .faq-row summary {
+    padding: 12px 16px;
+  }
+  .faq-body {
+    padding: 0 16px 16px;
+  }
+  .dept-c-head,
+  .dept-c-body,
+  .dept-c-foot {
+    padding-inline: 20px;
+  }
+  .section-heading .text-link {
+    width: 100%;
+  }
+}
+
+.dean-hours tbody th {
+  background: transparent;
+  color: var(--ink);
+}
+.dean-hours tbody tr:nth-child(even) {
+  background: var(--gray);
+}
+
+.dean-grid > *,
+.form-layout > *,
+.loc-grid > *,
+.faq-layout > *,
+.dept-c-grid > * {
+  min-width: 0;
+}
+@media (max-width: 479px) {
+  .dept-c-foot .btn {
+    flex: 1 1 100%;
+  }
+}
