@@ -158,6 +158,7 @@
     });
   }
   function spy() {
+    if (!sections.length) return;
     const line = parseFloat(getComputedStyle(root).getPropertyValue("--stack-top")) + tabs.offsetHeight + 40;
     let current = sections[0];
     sections.forEach((s) => {
