@@ -778,3 +778,22 @@
 .cta-band :focus-visible {
   outline-color: var(--gold);
 }
+
+/* Small screens: plain block flow for the banner (see research.css) */
+@media (max-width: 1099px) {
+  .life-banner {
+    display: flow-root;
+  }
+  .life-banner > .container,
+  .life-banner-grid {
+    display: block;
+  }
+  .banner-stats {
+    margin-top: 32px;
+  }
+}
+@media (max-width: 767px) {
+  .banner-stats {
+    margin-top: 24px;
+  }
+}

@@ -1317,11 +1317,17 @@ select.control {
 }
 
 /* 44px touch targets for inline header/footer links on mobile (brand kit §4) */
-@media (max-width: 767px) {
+@media (max-width: 1099px) {
   .page-banner .breadcrumb a,
-  .footer address a {
+  .footer address a,
+  .footer-links a,
+  .footer-links button {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
+  }
+  .footer-links a,
+  .footer-links button {
+    display: flex;
   }
 }
