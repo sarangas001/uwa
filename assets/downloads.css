@@ -743,3 +743,35 @@ section.content-section.dl-cta {
     padding: 0 10px;
   }
 }
+
+/* Brand kit §20: download button = secondary (purple outline), solid purple on hover */
+.btn.dl:hover,
+.btn.dl:focus-visible {
+  background: var(--purple);
+  border-color: var(--purple);
+  color: #fff;
+}
+/* Brand kit §4: text button = text only, no background or border */
+.btn.text {
+  background: transparent;
+  border-color: transparent;
+  color: var(--purple);
+}
+.btn.text:hover {
+  background: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--deep);
+  box-shadow: none;
+}
+.doc-top p.fmt {
+  font-weight: 500;
+  color: #45414a;
+}
+.doc-foot {
+  justify-content: flex-end;
+}
+@media (max-width: 767px) {
+  .doc-actions .btn {
+    flex: 1;
+  }
+}
